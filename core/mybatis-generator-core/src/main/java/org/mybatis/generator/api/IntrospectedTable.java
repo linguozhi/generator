@@ -25,15 +25,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.mybatis.generator.config.Context;
-import org.mybatis.generator.config.GeneratedKey;
-import org.mybatis.generator.config.JavaClientGeneratorConfiguration;
-import org.mybatis.generator.config.JavaModelGeneratorConfiguration;
-import org.mybatis.generator.config.ModelType;
-import org.mybatis.generator.config.PropertyHolder;
-import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.config.SqlMapGeneratorConfiguration;
-import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
+import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.rules.ConditionalModelRules;
 import org.mybatis.generator.internal.rules.FlatModelRules;
 import org.mybatis.generator.internal.rules.HierarchicalModelRules;
@@ -163,6 +156,9 @@ public abstract class IntrospectedTable {
         
         /** The attr example where clause id. */
         ATTR_EXAMPLE_WHERE_CLAUSE_ID,
+
+        /** The attr where clause id.  add by lingz 20160622*/
+        ATTR_WHERE_CLAUSE_ID,
         
         /** The attr base column list id. */
         ATTR_BASE_COLUMN_LIST_ID,
@@ -172,7 +168,11 @@ public abstract class IntrospectedTable {
         
         /** The ATT r_ mybati s3_ updat e_ b y_ exampl e_ wher e_ claus e_ id. */
         ATTR_MYBATIS3_UPDATE_BY_EXAMPLE_WHERE_CLAUSE_ID,
-        
+
+        ATTR_MYBATIS3_JAVA_SERVICE_TYPE,
+
+        ATTR_MYBATIS3_JAVA_CONTROLLER_TYPE,
+
         /** The ATT r_ mybati s3_ sq l_ provide r_ type. */
         ATTR_MYBATIS3_SQL_PROVIDER_TYPE
     }
@@ -759,6 +759,8 @@ public abstract class IntrospectedTable {
         calculateJavaClientAttributes();
         calculateModelAttributes();
         calculateXmlAttributes();
+        calculateJavaServiceAttributes();
+        calculateJavaControllerAttributes();
 
         if (tableConfiguration.getModelType() == ModelType.HIERARCHICAL) {
             rules = new HierarchicalModelRules(this);
@@ -804,6 +806,7 @@ public abstract class IntrospectedTable {
         setBaseResultMapId("BaseResultMap"); //$NON-NLS-1$
         setResultMapWithBLOBsId("ResultMapWithBLOBs"); //$NON-NLS-1$
         setExampleWhereClauseId("Example_Where_Clause"); //$NON-NLS-1$
+        setWhereClauseId("Where_Clause");
         setBaseColumnListId("Base_Column_List"); //$NON-NLS-1$
         setBlobColumnListId("Blob_Column_List"); //$NON-NLS-1$
         setMyBatis3UpdateByExampleWhereClauseId("Update_By_Example_Where_Clause"); //$NON-NLS-1$
@@ -838,6 +841,10 @@ public abstract class IntrospectedTable {
     public void setExampleWhereClauseId(String s) {
         internalAttributes.put(InternalAttribute.ATTR_EXAMPLE_WHERE_CLAUSE_ID,
                 s);
+    }
+
+    public void setWhereClauseId(String s) {
+        internalAttributes.put(InternalAttribute.ATTR_WHERE_CLAUSE_ID, s);
     }
 
     /**
@@ -1078,6 +1085,10 @@ public abstract class IntrospectedTable {
                 .get(InternalAttribute.ATTR_EXAMPLE_WHERE_CLAUSE_ID);
     }
 
+    public String getWhereClauseId() {
+        return internalAttributes.get(InternalAttribute.ATTR_WHERE_CLAUSE_ID);
+    }
+
     /**
      * Gets the my batis3 update by example where clause id.
      *
@@ -1313,6 +1324,41 @@ public abstract class IntrospectedTable {
         return sb.toString();
     }
 
+
+    /**
+     * Calculate java service package
+     * add by lingz @20160526
+     * @return
+     */
+    protected String calculateJavaServicePackage() {
+        JavaServiceGeneratorConfiguration config = context.getJavaServiceGeneratorConfiguration();
+        if(null == config) {
+            return null;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(config.getTargetPackage());
+        sb.append(fullyQualifiedTable.getSubPackage(isSubPackagesEnabled(config)));
+        return sb.toString();
+    }
+
+    /**
+     * Calculate java controller package
+     * add by lingz @20160527
+     * @return
+     */
+    protected String calculateJavaControllerPackage() {
+        JavaControllerGeneratorConfiguration config = context.getJavaControllerGeneratorConfiguration();
+        if(null == config) {
+            return null;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(config.getTargetPackage());
+        sb.append(fullyQualifiedTable.getSubPackage(isSubPackagesEnabled(config)));
+        return sb.toString();
+    }
+
     /**
      * Calculate java client attributes.
      */
@@ -1401,6 +1447,38 @@ public abstract class IntrospectedTable {
     }
 
     /**
+     * Calculate service attributes
+     */
+    protected void calculateJavaServiceAttributes() {
+        String pakkage = calculateJavaServicePackage();
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.setLength(0);
+        sb.append(pakkage);
+        sb.append(".");
+        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append("Service");
+        setMybatis3JavaServiceType(sb.toString());
+    }
+
+    /**
+     * Calculate java controller attributes.
+     * add by lingz @20160527
+     */
+    private void calculateJavaControllerAttributes() {
+        String pakkage = calculateJavaControllerPackage();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(pakkage);
+        sb.append(".");
+        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append("Controller");
+        setMybatis3JavaControllerType(sb.toString());
+    }
+
+
+    /**
      * Calculate sql map package.
      *
      * @return the string
@@ -1482,6 +1560,22 @@ public abstract class IntrospectedTable {
      */
     protected String calculateSqlMapAliasedFullyQualifiedRuntimeTableName() {
         return fullyQualifiedTable.getAliasedFullyQualifiedTableNameAtRuntime();
+    }
+
+    /**
+     * calculate short table name
+     * add by lingz 20160622
+     * @return
+     */
+    public String calculateSqlShortTableName() {
+        String fullName = calculateSqlMapFullyQualifiedRuntimeTableName();
+        String[] arr = fullName.split("_");
+        StringBuilder shortName = new StringBuilder();
+        for (String str : arr) {
+            shortName.append(str.substring(0, 1));
+        }
+
+        return shortName.toString();
     }
 
     /**
@@ -1765,6 +1859,12 @@ public abstract class IntrospectedTable {
                 .get(InternalAttribute.ATTR_MYBATIS3_JAVA_MAPPER_TYPE);
     }
 
+    public String getMyBatis3JavaMapperInstance() {
+        String instance = fullyQualifiedTable.getDomainObjectName();
+        String firstChar = instance.substring(0, 1);
+        return instance.replaceFirst(firstChar, firstChar.toLowerCase()).concat("Mapper");
+    }
+
     /**
      * Sets the my batis3 java mapper type.
      *
@@ -1785,6 +1885,64 @@ public abstract class IntrospectedTable {
     public String getMyBatis3SqlProviderType() {
         return internalAttributes
                 .get(InternalAttribute.ATTR_MYBATIS3_SQL_PROVIDER_TYPE);
+    }
+
+    public void setMybatis3JavaServiceType(String mybatis3JavaServiceType) {
+        internalAttributes.put(InternalAttribute.ATTR_MYBATIS3_JAVA_SERVICE_TYPE, mybatis3JavaServiceType);
+    }
+
+    public String getMyBatis3JavaServiceType() {
+        return internalAttributes.get(InternalAttribute.ATTR_MYBATIS3_JAVA_SERVICE_TYPE);
+    }
+
+    public void setMybatis3JavaControllerType(String mybatis3JavaControllerType) {
+        internalAttributes.put(InternalAttribute.ATTR_MYBATIS3_JAVA_CONTROLLER_TYPE, mybatis3JavaControllerType);
+    }
+
+    public String getMybatis3JavaControllerType() {
+        return internalAttributes.get(InternalAttribute.ATTR_MYBATIS3_JAVA_CONTROLLER_TYPE);
+    }
+
+    /**
+     * 获取service对象名称
+     * @return
+     */
+    public String getServiceBeanName() {
+        FullyQualifiedJavaType serviceType = new FullyQualifiedJavaType(getMyBatis3JavaServiceType());
+        String shortName = serviceType.getShortName();
+        if (shortName.length() > 1) {
+            return shortName.substring(0,1).toLowerCase() + shortName.substring(1);
+        }
+
+        return shortName;
+    }
+
+    /**
+     * 获取mapper接口对象名称
+     * @return
+     */
+    public String getMapperBeanName() {
+        FullyQualifiedJavaType mapperType = new FullyQualifiedJavaType(getMyBatis3JavaMapperType());
+        String shortName = mapperType.getShortName();
+        if(shortName.length() > 1) {
+            return shortName.substring(0, 1).toLowerCase() + shortName.substring(1);
+        }
+
+        return shortName;
+    }
+
+    /**
+     * 获取model（实体）类对象名称
+     * @return
+     */
+    public String getModelBeanName() {
+        FullyQualifiedJavaType modelType = new FullyQualifiedJavaType(getBaseRecordType());
+        String shortName = modelType.getShortName();
+        if(shortName.length() > 1) {
+            return shortName.substring(0, 1).toLowerCase() + shortName.substring(1);
+        }
+
+        return shortName;
     }
 
     /**

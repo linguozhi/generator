@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration SYSTEM
+        "src/main/resources/org/mybatis/generator/config/xml/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动包位置 -->
+    <classPathEntry location="G:\project\mybatis-generator\mysql-connector-java-5.1.34_1.jar"/>
+
+    <context id="context1" defaultModelType="flat">
+
+        <!-- 生成的pojo，将implements Serializable-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 去掉生成注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+
+        <!-- 数据库链接URL、用户名、密码 -->
+<!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.9.234:3306/ums_statistics"
+                        userId="root"
+                        password="123456"/>
+                        -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.9.234:3306/marketing"
+                        userId="root"
+                        password="123456"/>
+
+        <!-- 模型文件 -->
+        <javaModelGenerator targetPackage="com.yiyou.marketing.model" targetProject="src/main/java"/>
+        <!-- XML映射文件 -->
+        <sqlMapGenerator targetPackage="com.yiyou.marketing.persistence" targetProject="src/main/java"/>
+        <!-- Mapper文件 -->
+        <javaClientGenerator targetPackage="com.yiyou.marketing.persistence" targetProject="src/main/java" type="XMLMAPPER"/>
+        <!--Service-->
+        <javaServiceGenerator targetPackage="com.yiyou.marketing.service" targetProject="src/main/java"  />
+        <!--Controller-->
+        <javaControllerGenerator targetPackage="com.qw.sdk.api.modules.tcoin.controller" targetProject="src/main/java"  />
+
+
+        <!-- 要生成哪些表(更改tableName和domainObjectName就可以) -->
+        <!-- <table tableName="%">
+             <generatedKey column="id" sqlStatement="MySql" identity="true" />
+         </table>-->
+        <!--<table tableName="un_silenced_config" domainObjectName="SilencedConfig"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"
+        />
+        -->
+        <!--<table tableName="tt_coverage_rate_daily" domainObjectName="ConverageRateDaily"-->
+               <!--enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--/>-->
+
+        <table tableName="mt_bulletin_audit" domainObjectName="BulletinAudit"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"
+        />
+    </context>
+</generatorConfiguration>

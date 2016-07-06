@@ -74,8 +74,6 @@ public class UpdateByExampleSelectiveElementGenerator extends
             isNotNullElement.addElement(new TextElement(sb.toString()));
         }
 
-        answer.addElement(getUpdateByExampleIncludeElement());
-
         if (context.getPlugins()
                 .sqlMapUpdateByExampleSelectiveElementGenerated(answer,
                         introspectedTable)) {

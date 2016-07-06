@@ -65,11 +65,12 @@
   tables.
 -->
 <!ELEMENT context (property*, plugin*, commentGenerator?, jdbcConnection, javaTypeResolver?,
-                         javaModelGenerator, sqlMapGenerator?, javaClientGenerator?, table+)>
+                         javaModelGenerator, sqlMapGenerator?, javaClientGenerator?, javaServiceGenerator?,javaControllerGenerator?, table+)>
 <!ATTLIST context id ID #REQUIRED
   defaultModelType CDATA #IMPLIED
   targetRuntime CDATA #IMPLIED
   introspectedColumnImpl CDATA #IMPLIED>
+
 
 <!--
   The jdbcConnection element is used to describe the JDBC connection that the generator
@@ -150,6 +151,24 @@
   targetPackage CDATA #REQUIRED
   targetProject CDATA #REQUIRED
   implementationPackage CDATA #IMPLIED>
+
+<!--
+    add service generator by lingz at 20160524
+-->
+<!ELEMENT javaServiceGenerator (property*)>
+<!ATTLIST javaServiceGenerator
+        targetPackage CDATA #REQUIRED
+        targetProject CDATA #REQUIRED
+        implementationPackage CDATA #IMPLIED>
+
+<!--
+    add controller generator by lingz @20160527
+-->
+<!ELEMENT javaControllerGenerator (property*)>
+<!ATTLIST javaControllerGenerator
+        targetPackage CDATA #REQUIRED
+        targetProject CDATA #REQUIRED
+        implementationPackage CDATA #IMPLIED>
 
 <!--
   The table element is used to specify a database table that will be the source information
