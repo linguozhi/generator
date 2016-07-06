@@ -67,6 +67,12 @@ public class Context extends PropertyHolder {
     /** The java client generator configuration. */
     private JavaClientGeneratorConfiguration javaClientGeneratorConfiguration;
 
+    /** The java service generator configuration. */
+    private JavaServiceGeneratorConfiguration javaServiceGeneratorConfiguration;
+
+    /** The java controller generator configuration. */
+    private JavaControllerGeneratorConfiguration javaControllerGeneratorConfiguration;
+
     /** The table configurations. */
     private ArrayList<TableConfiguration> tableConfigurations;
 
@@ -160,6 +166,23 @@ public class Context extends PropertyHolder {
      */
     public JavaModelGeneratorConfiguration getJavaModelGeneratorConfiguration() {
         return javaModelGeneratorConfiguration;
+    }
+
+    public JavaServiceGeneratorConfiguration getJavaServiceGeneratorConfiguration() {
+        return javaServiceGeneratorConfiguration;
+    }
+
+    public void setJavaServiceGeneratorConfiguration(JavaServiceGeneratorConfiguration javaServiceGeneratorConfiguration) {
+        this.javaServiceGeneratorConfiguration = javaServiceGeneratorConfiguration;
+    }
+
+
+    public JavaControllerGeneratorConfiguration getJavaControllerGeneratorConfiguration() {
+        return javaControllerGeneratorConfiguration;
+    }
+
+    public void setJavaControllerGeneratorConfiguration(JavaControllerGeneratorConfiguration javaControllerGeneratorConfiguration) {
+        this.javaControllerGeneratorConfiguration = javaControllerGeneratorConfiguration;
     }
 
     /**
