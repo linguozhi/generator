@@ -52,7 +52,7 @@ public class SelectListElementGenerator extends AbstractXmlElementGenerator {
 
         XmlElement limitElement = new XmlElement("if");
         limitElement.addAttribute(new Attribute("test", "offset > 0"));
-        limitElement.addElement(new TextElement("limit #{offset}, #{count}"));
+        limitElement.addElement(new TextElement("limit #{count} offset #{offset}"));
 
         answer.addElement(limitElement);
 
