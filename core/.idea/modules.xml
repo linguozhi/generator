@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator.iml" filepath="$PROJECT_DIR$/mybatis-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator-core/mybatis-generator-core.iml" filepath="$PROJECT_DIR$/mybatis-generator-core/mybatis-generator-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator-maven-plugin/mybatis-generator-maven-plugin.iml" filepath="$PROJECT_DIR$/mybatis-generator-maven-plugin/mybatis-generator-maven-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator-systests-common/mybatis-generator-systests-common.iml" filepath="$PROJECT_DIR$/mybatis-generator-systests-common/mybatis-generator-systests-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator-systests-domtests/mybatis-generator-systests-domtests.iml" filepath="$PROJECT_DIR$/mybatis-generator-systests-domtests/mybatis-generator-systests-domtests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator-systests-ibatis2-java2/mybatis-generator-systests-ibatis2-java2.iml" filepath="$PROJECT_DIR$/mybatis-generator-systests-ibatis2-java2/mybatis-generator-systests-ibatis2-java2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator-systests-ibatis2-java5/mybatis-generator-systests-ibatis2-java5.iml" filepath="$PROJECT_DIR$/mybatis-generator-systests-ibatis2-java5/mybatis-generator-systests-ibatis2-java5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-generator-systests-mybatis3/mybatis-generator-systests-mybatis3.iml" filepath="$PROJECT_DIR$/mybatis-generator-systests-mybatis3/mybatis-generator-systests-mybatis3.iml" />
+    </modules>
+  </component>
+</project>

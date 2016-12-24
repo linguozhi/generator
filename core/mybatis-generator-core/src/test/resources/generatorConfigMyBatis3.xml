@@ -23,149 +23,60 @@
 <generatorConfiguration>
   <!-- This should cause an error because sqlMapGenerator is required
        if there is no javaClientGenerator -->
-  <context id="MyBatis3NoClient" targetRuntime="MyBatis3" defaultModelType="flat">
-    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+  <classPathEntry location="G:\project\mybatis-generator\mysql-connector-java-5.1.34_1.jar"/>
+  <context id="context1" defaultModelType="flat">
 
-    <jdbcConnection driverClass="org.hsqldb.jdbcDriver"
-        connectionURL="jdbc:hsqldb:mem:aname"
-        userId="sa" />
+    <!-- 生成的pojo，将implements Serializable-->
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <!-- 去掉生成注释 -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="true"/>
+      <property name="addRemarkComments" value="true"/>
+    </commentGenerator>
 
-    <javaModelGenerator targetPackage="ibatortest.generated.flat.java5.model"
-        targetProject="target/generated-sources/mybatis-generator/mybatis3">
-      <property name="enableSubPackages" value="true" />
-      <property name="trimStrings" value="true" />
-    </javaModelGenerator>
 
-    <table tableName="FieldsOnly" />
-    <table tableName="PKOnly" />
-    <table tableName="PKFields" alias="B" />
-    <table tableName="PKBlobs" />
-    <table tableName="PKFieldsBlobs" />
-    <table tableName="FieldsBlobs" />
-    <table tableName="awful table" alias="A">
-      <property name="useColumnIndexes" value="true"/>
-      <generatedKey column="CuStOmEr iD" sqlStatement="JDBC" />
-      <columnOverride column="first name" property="firstFirstName" />
-      <columnOverride column="first_name" property="secondFirstName" />
-      <columnOverride column="firstName" property="thirdFirstName" />
-      <columnOverride column="from" delimitedColumnName="true" >
-        <property name="fredswife" value="wilma"/>
-      </columnOverride>
-      <columnOverride column="active" javaType="boolean" />
-    </table>
-  </context>
+    <!-- 数据库链接URL、用户名、密码 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                    connectionURL="jdbc:mysql://192.168.9.234:3306/ums_statistics"
+                    userId="root"
+                    password="123456"/>
+    <!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                            connectionURL="jdbc:mysql://192.168.9.234:3306/marketing"
+                            userId="root"
+                            password="123456"/>-->
 
-  <!-- This should cause an error because sqlMapGenerator is required
-       for the XMLMAPPER client -->
-  <context id="MyBatis3XMLMapper" targetRuntime="MyBatis3" defaultModelType="flat">
-    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+    <!-- 模型文件 -->
+    <javaModelGenerator targetPackage="com.qw.ums.console.modules.sdkreport.entity" targetProject="src/main/java"/>
+    <!-- XML映射文件 -->
+    <sqlMapGenerator targetPackage="com.qw.ums.console.modules.sdkreport.mapper" targetProject="src/main/java"/>
+    <!-- Mapper文件 -->
+    <javaClientGenerator targetPackage="com.qw.ums.console.modules.sdkreport.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+    <!--Service-->
+    <javaServiceGenerator targetPackage="com.qw.ums.console.modules.sdkreport.service" targetProject="src/main/java"  />
+    <!--Controller-->
+    <javaControllerGenerator targetPackage="com.qw.ums.console.controller" targetProject="src/main/java"  />
 
-    <jdbcConnection driverClass="org.hsqldb.jdbcDriver"
-        connectionURL="jdbc:hsqldb:mem:aname"
-        userId="sa" />
 
-    <javaModelGenerator targetPackage="ibatortest.generated.flat.java5.model"
-        targetProject="target/generated-sources/mybatis-generator/mybatis3">
-      <property name="enableSubPackages" value="true" />
-      <property name="trimStrings" value="true" />
-    </javaModelGenerator>
-    
-    <javaClientGenerator type="XMLMAPPER" targetPackage="ibatortest.generated.flat.java5.client"
-     	targetProject="target/generated-sources/mybatis-generator/mybatis3">
-    </javaClientGenerator>
+    <!-- 要生成哪些表(更改tableName和domainObjectName就可以) -->
+    <!-- <table tableName="%">
+         <generatedKey column="id" sqlStatement="MySql" identity="true" />
+     </table>-->
+    <!--<table tableName="un_silenced_config" domainObjectName="SilencedConfig"
+           enableCountByExample="false"
+           enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false"
+    />
+    -->
+    <table tableName="ads_callback_daily" domainObjectName="CallbackDaily"
+           enableCountByExample="false"
+           enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false"
+    />
 
-    <table tableName="FieldsOnly" />
-    <table tableName="PKOnly" />
-    <table tableName="PKFields" alias="B" />
-    <table tableName="PKBlobs" />
-    <table tableName="PKFieldsBlobs" />
-    <table tableName="FieldsBlobs" />
-    <table tableName="awful table" alias="A">
-      <property name="useColumnIndexes" value="true"/>
-      <generatedKey column="CuStOmEr iD" sqlStatement="JDBC" />
-      <columnOverride column="first name" property="firstFirstName" />
-      <columnOverride column="first_name" property="secondFirstName" />
-      <columnOverride column="firstName" property="thirdFirstName" />
-      <columnOverride column="from" delimitedColumnName="true" >
-        <property name="fredswife" value="wilma"/>
-      </columnOverride>
-      <columnOverride column="active" javaType="boolean" />
-    </table>
-  </context>
-
-  <!-- This should cause an error because sqlMapGenerator is required
-       for the MIXEDMAPPER client -->
-  <context id="MyBatis3MixedMapper" targetRuntime="MyBatis3" defaultModelType="flat">
-    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
-
-    <jdbcConnection driverClass="org.hsqldb.jdbcDriver"
-        connectionURL="jdbc:hsqldb:mem:aname"
-        userId="sa" />
-
-    <javaModelGenerator targetPackage="ibatortest.generated.flat.java5.model"
-        targetProject="target/generated-sources/mybatis-generator/mybatis3">
-      <property name="enableSubPackages" value="true" />
-      <property name="trimStrings" value="true" />
-    </javaModelGenerator>
-    
-    <javaClientGenerator type="MIXEDMAPPER" targetPackage="ibatortest.generated.flat.java5.client"
-     	targetProject="target/generated-sources/mybatis-generator/mybatis3">
-    </javaClientGenerator>
-
-    <table tableName="FieldsOnly" />
-    <table tableName="PKOnly" />
-    <table tableName="PKFields" alias="B" />
-    <table tableName="PKBlobs" />
-    <table tableName="PKFieldsBlobs" />
-    <table tableName="FieldsBlobs" />
-    <table tableName="awful table" alias="A">
-      <property name="useColumnIndexes" value="true"/>
-      <generatedKey column="CuStOmEr iD" sqlStatement="JDBC" />
-      <columnOverride column="first name" property="firstFirstName" />
-      <columnOverride column="first_name" property="secondFirstName" />
-      <columnOverride column="firstName" property="thirdFirstName" />
-      <columnOverride column="from" delimitedColumnName="true" >
-        <property name="fredswife" value="wilma"/>
-      </columnOverride>
-      <columnOverride column="active" javaType="boolean" />
-    </table>
-  </context>
-
-  <!-- This should not cause an error because sqlMapGenerator is not required
-       for the ANNOTATEDMAPPER client -->
-  <context id="MyBatis3AnnotatedMapper" targetRuntime="MyBatis3" defaultModelType="flat">
-    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
-
-    <jdbcConnection driverClass="org.hsqldb.jdbcDriver"
-        connectionURL="jdbc:hsqldb:mem:aname"
-        userId="sa" />
-
-    <javaModelGenerator targetPackage="ibatortest.generated.flat.java5.model"
-        targetProject="target/generated-sources/mybatis-generator/mybatis3">
-      <property name="enableSubPackages" value="true" />
-      <property name="trimStrings" value="true" />
-    </javaModelGenerator>
-    
-    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="ibatortest.generated.flat.java5.client"
-     	targetProject="target/generated-sources/mybatis-generator/mybatis3">
-    </javaClientGenerator>
-
-    <table tableName="FieldsOnly" />
-    <table tableName="PKOnly" />
-    <table tableName="PKFields" alias="B" />
-    <table tableName="PKBlobs" />
-    <table tableName="PKFieldsBlobs" />
-    <table tableName="FieldsBlobs" />
-    <table tableName="awful table" alias="A">
-      <property name="useColumnIndexes" value="true"/>
-      <generatedKey column="CuStOmEr iD" sqlStatement="JDBC" />
-      <columnOverride column="first name" property="firstFirstName" />
-      <columnOverride column="first_name" property="secondFirstName" />
-      <columnOverride column="firstName" property="thirdFirstName" />
-      <columnOverride column="from" delimitedColumnName="true" >
-        <property name="fredswife" value="wilma"/>
-      </columnOverride>
-      <columnOverride column="active" javaType="boolean" />
-    </table>
+    <!--        <table tableName="mt_bulletin_audit" domainObjectName="BulletinAudit"
+                   enableCountByExample="false"
+                   enableUpdateByExample="false" enableDeleteByExample="false"
+                   enableSelectByExample="false" selectByExampleQueryId="false"
+            />-->
   </context>
 </generatorConfiguration>
