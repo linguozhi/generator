@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qw.ums.console.modules.sdkreport.mapper.SubscribeStatMonthlyMapper">
+  <resultMap id="BaseResultMap" type="com.qw.ums.console.modules.sdkreport.model.SubscribeStatMonthly">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="year_month" jdbcType="INTEGER" property="yearMonth" />
+    <result column="sdkgid" jdbcType="INTEGER" property="sdkgid" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="pv" jdbcType="INTEGER" property="pv" />
+    <result column="uv" jdbcType="INTEGER" property="uv" />
+    <result column="ncnt" jdbcType="INTEGER" property="ncnt" />
+    <result column="dcnt" jdbcType="INTEGER" property="dcnt" />
+    <result column="scnt" jdbcType="INTEGER" property="scnt" />
+    <result column="acnt" jdbcType="INTEGER" property="acnt" />
+    <result column="rcnt" jdbcType="INTEGER" property="rcnt" />
+    <result column="lcnt" jdbcType="INTEGER" property="lcnt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, year_month, sdkgid, gid, cid, pv, uv, ncnt, dcnt, scnt, acnt, rcnt, lcnt
+  </sql>
+  <sql id="Where_Clause">
+     where 1=1 
+    <if test="record.id != null">
+      and ssm.id = #{record.id,jdbcType=INTEGER}
+    </if>
+    <if test="record.yearMonth != null">
+      and ssm.year_month = #{record.yearMonth,jdbcType=INTEGER}
+    </if>
+    <if test="record.sdkgid != null">
+      and ssm.sdkgid = #{record.sdkgid,jdbcType=INTEGER}
+    </if>
+    <if test="record.gid != null">
+      and ssm.gid = #{record.gid,jdbcType=INTEGER}
+    </if>
+    <if test="record.cid != null">
+      and ssm.cid = #{record.cid,jdbcType=INTEGER}
+    </if>
+    <if test="record.pv != null">
+      and ssm.pv = #{record.pv,jdbcType=INTEGER}
+    </if>
+    <if test="record.uv != null">
+      and ssm.uv = #{record.uv,jdbcType=INTEGER}
+    </if>
+    <if test="record.ncnt != null">
+      and ssm.ncnt = #{record.ncnt,jdbcType=INTEGER}
+    </if>
+    <if test="record.dcnt != null">
+      and ssm.dcnt = #{record.dcnt,jdbcType=INTEGER}
+    </if>
+    <if test="record.scnt != null">
+      and ssm.scnt = #{record.scnt,jdbcType=INTEGER}
+    </if>
+    <if test="record.acnt != null">
+      and ssm.acnt = #{record.acnt,jdbcType=INTEGER}
+    </if>
+    <if test="record.rcnt != null">
+      and ssm.rcnt = #{record.rcnt,jdbcType=INTEGER}
+    </if>
+    <if test="record.lcnt != null">
+      and ssm.lcnt = #{record.lcnt,jdbcType=INTEGER}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from subscribe_stat_monthly
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from subscribe_stat_monthly
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qw.ums.console.modules.sdkreport.model.SubscribeStatMonthly">
+    insert into subscribe_stat_monthly (id, year_month, sdkgid, 
+      gid, cid, pv, uv, 
+      ncnt, dcnt, scnt, acnt, 
+      rcnt, lcnt)
+    values (#{id,jdbcType=INTEGER}, #{yearMonth,jdbcType=INTEGER}, #{sdkgid,jdbcType=INTEGER}, 
+      #{gid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{pv,jdbcType=INTEGER}, #{uv,jdbcType=INTEGER}, 
+      #{ncnt,jdbcType=INTEGER}, #{dcnt,jdbcType=INTEGER}, #{scnt,jdbcType=INTEGER}, #{acnt,jdbcType=INTEGER}, 
+      #{rcnt,jdbcType=INTEGER}, #{lcnt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qw.ums.console.modules.sdkreport.model.SubscribeStatMonthly">
+    insert into subscribe_stat_monthly
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="yearMonth != null">
+        year_month,
+      </if>
+      <if test="sdkgid != null">
+        sdkgid,
+      </if>
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="pv != null">
+        pv,
+      </if>
+      <if test="uv != null">
+        uv,
+      </if>
+      <if test="ncnt != null">
+        ncnt,
+      </if>
+      <if test="dcnt != null">
+        dcnt,
+      </if>
+      <if test="scnt != null">
+        scnt,
+      </if>
+      <if test="acnt != null">
+        acnt,
+      </if>
+      <if test="rcnt != null">
+        rcnt,
+      </if>
+      <if test="lcnt != null">
+        lcnt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="yearMonth != null">
+        #{yearMonth,jdbcType=INTEGER},
+      </if>
+      <if test="sdkgid != null">
+        #{sdkgid,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="pv != null">
+        #{pv,jdbcType=INTEGER},
+      </if>
+      <if test="uv != null">
+        #{uv,jdbcType=INTEGER},
+      </if>
+      <if test="ncnt != null">
+        #{ncnt,jdbcType=INTEGER},
+      </if>
+      <if test="dcnt != null">
+        #{dcnt,jdbcType=INTEGER},
+      </if>
+      <if test="scnt != null">
+        #{scnt,jdbcType=INTEGER},
+      </if>
+      <if test="acnt != null">
+        #{acnt,jdbcType=INTEGER},
+      </if>
+      <if test="rcnt != null">
+        #{rcnt,jdbcType=INTEGER},
+      </if>
+      <if test="lcnt != null">
+        #{lcnt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qw.ums.console.modules.sdkreport.model.SubscribeStatMonthly">
+    update subscribe_stat_monthly
+    <set>
+      <if test="yearMonth != null">
+        year_month = #{yearMonth,jdbcType=INTEGER},
+      </if>
+      <if test="sdkgid != null">
+        sdkgid = #{sdkgid,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        gid = #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="pv != null">
+        pv = #{pv,jdbcType=INTEGER},
+      </if>
+      <if test="uv != null">
+        uv = #{uv,jdbcType=INTEGER},
+      </if>
+      <if test="ncnt != null">
+        ncnt = #{ncnt,jdbcType=INTEGER},
+      </if>
+      <if test="dcnt != null">
+        dcnt = #{dcnt,jdbcType=INTEGER},
+      </if>
+      <if test="scnt != null">
+        scnt = #{scnt,jdbcType=INTEGER},
+      </if>
+      <if test="acnt != null">
+        acnt = #{acnt,jdbcType=INTEGER},
+      </if>
+      <if test="rcnt != null">
+        rcnt = #{rcnt,jdbcType=INTEGER},
+      </if>
+      <if test="lcnt != null">
+        lcnt = #{lcnt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qw.ums.console.modules.sdkreport.model.SubscribeStatMonthly">
+    update subscribe_stat_monthly
+    set year_month = #{yearMonth,jdbcType=INTEGER},
+      sdkgid = #{sdkgid,jdbcType=INTEGER},
+      gid = #{gid,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=INTEGER},
+      pv = #{pv,jdbcType=INTEGER},
+      uv = #{uv,jdbcType=INTEGER},
+      ncnt = #{ncnt,jdbcType=INTEGER},
+      dcnt = #{dcnt,jdbcType=INTEGER},
+      scnt = #{scnt,jdbcType=INTEGER},
+      acnt = #{acnt,jdbcType=INTEGER},
+      rcnt = #{rcnt,jdbcType=INTEGER},
+      lcnt = #{lcnt,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectTotal" parameterType="com.qw.ums.console.modules.sdkreport.model.SubscribeStatMonthly" resultType="java.lang.Integer">
+    select count(*) from subscribe_stat_monthly ssm
+    <include refid="Where_Clause" />
+  </select>
+  <select id="selectList" parameterType="com.qw.ums.console.modules.sdkreport.model.SubscribeStatMonthly" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+     from subscribe_stat_monthly ssm
+    <include refid="Where_Clause" />
+    <if test="order != null and order.colName != null and order.colName != ''">
+      order by ${order.colName}
+      <if test="order.desc">
+        desc
+      </if>
+    </if>
+    <if test="count > 0">
+      limit #{count} offset #{offset}
+    </if>
+  </select>
+</mapper>

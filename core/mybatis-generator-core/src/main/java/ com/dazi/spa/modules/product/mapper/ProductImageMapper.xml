@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=" com.dazi.spa.modules.product.mapper.ProductImageMapper">
+  <resultMap id="BaseResultMap" type=" com.dazi.spa.modules.product.model.ProductImage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="image_id" jdbcType="INTEGER" property="imageId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, product_id, image_id, create_time, modify_time
+  </sql>
+  <sql id="Where_Clause">
+     where 1=1 
+    <if test="record.id != null">
+      and spi.id = #{record.id,jdbcType=INTEGER}
+    </if>
+    <if test="record.productId != null">
+      and spi.product_id = #{record.productId,jdbcType=INTEGER}
+    </if>
+    <if test="record.imageId != null">
+      and spi.image_id = #{record.imageId,jdbcType=INTEGER}
+    </if>
+    <if test="record.createTime != null">
+      and spi.create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="record.modifyTime != null">
+      and spi.modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from spa_product_image
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from spa_product_image
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dazi.spa.modules.product.model.ProductImage">
+    insert into spa_product_image (id, product_id, image_id, 
+      create_time, modify_time)
+    values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{imageId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dazi.spa.modules.product.model.ProductImage">
+    insert into spa_product_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="imageId != null">
+        image_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="imageId != null">
+        #{imageId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType=" com.dazi.spa.modules.product.model.ProductImage">
+    update spa_product_image
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="imageId != null">
+        image_id = #{imageId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType=" com.dazi.spa.modules.product.model.ProductImage">
+    update spa_product_image
+    set product_id = #{productId,jdbcType=INTEGER},
+      image_id = #{imageId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectTotal" parameterType="com.dazi.spa.modules.product.model.ProductImage" resultType="java.lang.Integer">
+    select count(*) from spa_product_image spi
+    <include refid="Where_Clause" />
+  </select>
+  <select id="selectList" parameterType="com.dazi.spa.modules.product.model.ProductImage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+     from spa_product_image spi
+    <include refid="Where_Clause" />
+    <if test="order != null and order.colName != null and order.colName != ''">
+      order by ${order.colName}
+      <if test="order.desc">
+        desc
+      </if>
+    </if>
+    <if test="count &gt; 0">
+      limit #{count} offset #{offset}
+    </if>
+  </select>
+  <resultMap id="BaseResultMap" type=" com.dazi.spa.modules.product.model.ProductImage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="image_id" jdbcType="INTEGER" property="imageId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, product_id, image_id, create_time, modify_time
+  </sql>
+  <sql id="Where_Clause">
+     where 1=1 
+    <if test="record.id != null">
+      and spi.id = #{record.id,jdbcType=INTEGER}
+    </if>
+    <if test="record.productId != null">
+      and spi.product_id = #{record.productId,jdbcType=INTEGER}
+    </if>
+    <if test="record.imageId != null">
+      and spi.image_id = #{record.imageId,jdbcType=INTEGER}
+    </if>
+    <if test="record.createTime != null">
+      and spi.create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="record.modifyTime != null">
+      and spi.modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from spa_product_image
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from spa_product_image
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dazi.spa.modules.product.model.ProductImage">
+    insert into spa_product_image (id, product_id, image_id, 
+      create_time, modify_time)
+    values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{imageId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dazi.spa.modules.product.model.ProductImage">
+    insert into spa_product_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="imageId != null">
+        image_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="imageId != null">
+        #{imageId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType=" com.dazi.spa.modules.product.model.ProductImage">
+    update spa_product_image
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="imageId != null">
+        image_id = #{imageId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType=" com.dazi.spa.modules.product.model.ProductImage">
+    update spa_product_image
+    set product_id = #{productId,jdbcType=INTEGER},
+      image_id = #{imageId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectTotal" parameterType="com.dazi.spa.modules.product.model.ProductImage" resultType="java.lang.Integer">
+    select count(*) from spa_product_image spi
+    <include refid="Where_Clause" />
+  </select>
+  <select id="selectList" parameterType="com.dazi.spa.modules.product.model.ProductImage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+     from spa_product_image spi
+    <include refid="Where_Clause" />
+    <if test="order != null and order.colName != null and order.colName != ''">
+      order by ${order.colName}
+      <if test="order.desc">
+        desc
+      </if>
+    </if>
+    <if test="count &gt; 0">
+      limit #{count} offset #{offset}
+    </if>
+  </select>
+</mapper>
