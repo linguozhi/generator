@@ -56,12 +56,12 @@ public class GetListMethodGenerator extends AbstractJavaControllerMethodGenerato
         sb.append(".");
         sb.append("selectTotal(");
         sb.append(introspectedTable.getModelBeanName());
-        sb.append(")");
+        sb.append(");");
         method.addBodyLine(sb.toString());
         sb.setLength(0);
         sb.append("List<").append(introspectedTable.getRules().calculateAllFieldsClass().getShortName());
         sb.append(">");
-        sb.append(" list = null");
+        sb.append(" list = null;");
         method.addBodyLine(sb.toString());
         sb.setLength(0);
         sb.append("if(total > 0) {");
@@ -71,14 +71,14 @@ public class GetListMethodGenerator extends AbstractJavaControllerMethodGenerato
         sb.append(".").append("selectList(");
         sb.append(introspectedTable.getModelBeanName());
         sb.append(", order, start, length");
-        sb.append(")");
+        sb.append(");");
         method.addBodyLine(sb.toString());
         sb.setLength(0);
         sb.append("}");
         method.addBodyLine(sb.toString());
         sb.setLength(0);
         method.addBodyLine("");
-        sb.append("return ResponseHelper.buildDateTable(draw, total, list)");
+        sb.append("return ResponseHelper.buildTable(draw, total, list);");
         method.addBodyLine(sb.toString());
 
         topLevelClass.addImportedTypes(importedTypes);
