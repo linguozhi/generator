@@ -83,7 +83,8 @@ public class BaseControllerGenerator extends AbstractJavaGenerator {
     }
 
     private void addDeleteMethod(TopLevelClass topLevelClass) {
-
+        AbstractJavaControllerMethodGenerator methodGenerator = new DeleteMethodGenerator();
+        initializeAndExecuteGenerator(methodGenerator, topLevelClass);
     }
 
     private void addIndexMethod(TopLevelClass topLevelClass) {

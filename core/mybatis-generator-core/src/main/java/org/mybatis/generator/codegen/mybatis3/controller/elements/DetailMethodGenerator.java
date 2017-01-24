@@ -20,7 +20,7 @@ public class DetailMethodGenerator extends AbstractJavaControllerMethodGenerator
         Set<FullyQualifiedJavaType> importTypes = new TreeSet<FullyQualifiedJavaType>();
 
         Method method = new Method();
-        method.addAnnotation("@RequestMapping(\"/detail\"");
+        method.addAnnotation("@RequestMapping(\"/detail\")");
         method.setVisibility(JavaVisibility.PUBLIC);
 
         FullyQualifiedJavaType returnType = FullyQualifiedJavaType.getStringInstance();
@@ -30,12 +30,13 @@ public class DetailMethodGenerator extends AbstractJavaControllerMethodGenerator
 
 
         // primary key, eg:id
-        FullyQualifiedJavaType parameterType = FullyQualifiedJavaType.getIntInstance();
+        FullyQualifiedJavaType parameterType = new FullyQualifiedJavaType(introspectedTable.getPrimaryKeyType());
         importTypes.add(parameterType);
         method.addParameter(new Parameter(parameterType, introspectedTable.getPrimaryKeyColumns().get(0).getActualColumnName()));
 
         // model
         parameterType = new FullyQualifiedJavaType("org.springframework.ui.Model");
+        importTypes.add(parameterType);
         method.addParameter(new Parameter(parameterType, "model"));
 
         // method body
