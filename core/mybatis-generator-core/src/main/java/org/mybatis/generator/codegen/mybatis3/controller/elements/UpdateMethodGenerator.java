@@ -41,7 +41,7 @@ public class UpdateMethodGenerator extends AbstractJavaControllerMethodGenerator
         method.addBodyLine("");
 
         sb.setLength(0);
-        sb.append("if( ").append(introspectedTable.getServiceBeanName()).append(".").append("updateByPrimaryKeySelective");
+        sb.append("if (").append(introspectedTable.getServiceBeanName()).append(".").append("updateByPrimaryKeySelective");
         sb.append("(").append(introspectedTable.getModelBeanName()).append(")").append(" < 1 ) {");
         method.addBodyLine(sb.toString());
         sb.setLength(0);
@@ -55,7 +55,7 @@ public class UpdateMethodGenerator extends AbstractJavaControllerMethodGenerator
         sb.setLength(0);
 
         method.addBodyLine("");
-        sb.append("return ResponseHelper.buildSuccessResult()");
+        sb.append("return ResponseHelper.buildSuccessResult();");
         method.addBodyLine(sb.toString());
 
         topLevelClass.addImportedTypes(importTypes);

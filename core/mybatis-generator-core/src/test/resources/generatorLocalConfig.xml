@@ -18,7 +18,7 @@
 
         <!-- 数据库链接URL、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.9.232:3306/dtest"
+                        connectionURL="jdbc:mysql://192.168.9.232:3306/marketing"
                         userId="root"
                         password="123456"/>
 <!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -27,15 +27,15 @@
                         password="123456"/>-->
 
         <!-- 模型文件 -->
-        <javaModelGenerator targetPackage="com.dazi.core.modules.column.model" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.yiyou.marketing.model" targetProject="src/main/java"/>
         <!-- XML映射文件 -->
-        <sqlMapGenerator targetPackage="com.dazi.core.modules.column.mapper" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.yiyou.marketing.persistence" targetProject="src/main/java"/>
         <!-- Mapper文件 -->
-        <javaClientGenerator targetPackage="com.dazi.core.modules.column.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.yiyou.marketing.persistence" targetProject="src/main/java" type="XMLMAPPER"/>
         <!--Service-->
-        <javaServiceGenerator targetPackage="com.dazi.core.modules.column.service" targetProject="src/main/java"  />
+        <javaServiceGenerator targetPackage="com.yiyou.marketing.service" targetProject="src/main/java"  />
         <!--Controller-->
-        <javaControllerGenerator targetPackage="com.dazi.core.modules.column.controller" targetProject="src/main/java"  />
+        <javaControllerGenerator targetPackage="com.qw.gs.console.modules.statis.controller" targetProject="src/main/java"  />
 
 
         <!-- 要生成哪些表(更改tableName和domainObjectName就可以) -->
@@ -48,13 +48,13 @@
                enableSelectByExample="false" selectByExampleQueryId="false"
         />
         -->
-        <table tableName="dz_column" domainObjectName="Column"
+        <table tableName="mt_user_limit_rule" domainObjectName="UserLimitRule"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"
         />
 
-<!--        <table tableName="mt_bulletin_audit" domainObjectName="BulletinAudit"
+<!--        <table tableName="mt_statis_audit" domainObjectName="statisAudit"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"

@@ -55,8 +55,8 @@ public class DetailMethodGenerator extends AbstractJavaControllerMethodGenerator
 
         sb.append("return ResponseHelper.buildErrorResult(\"对象不存在\");");
         method.addBodyLine(sb.toString());
-        sb.append("}");
-        method.addBodyLine(sb.toString());
+        method.addBodyLine("}");
+
         method.addBodyLine("");
 
         sb.setLength(0);
