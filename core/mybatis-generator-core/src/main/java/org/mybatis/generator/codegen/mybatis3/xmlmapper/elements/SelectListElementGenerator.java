@@ -42,7 +42,7 @@ public class SelectListElementGenerator extends AbstractXmlElementGenerator {
 
         XmlElement orderElement = new XmlElement("if");
         orderElement.addAttribute(new Attribute("test", "order != null and order.colName != null and order.colName != ''"));
-        orderElement.addElement(new TextElement("order by ${order.column}"));
+        orderElement.addElement(new TextElement("order by ${order.colName}"));
         XmlElement descElement = new XmlElement("if");
         descElement.addAttribute(new Attribute("test", "order.desc"));
         descElement.addElement(new TextElement("desc"));
@@ -51,7 +51,7 @@ public class SelectListElementGenerator extends AbstractXmlElementGenerator {
         answer.addElement(orderElement);
 
         XmlElement limitElement = new XmlElement("if");
-        limitElement.addAttribute(new Attribute("test", "offset > 0"));
+        limitElement.addAttribute(new Attribute("test", "count > 0"));
         limitElement.addElement(new TextElement("limit #{count} offset #{offset}"));
 
         answer.addElement(limitElement);

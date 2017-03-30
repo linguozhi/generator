@@ -46,6 +46,7 @@ public class BaseServiceGenerator extends AbstractJavaGenerator {
         topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.util.Assert"));
         topLevelClass.addImportedType(new FullyQualifiedJavaType("com.qw.ums.console.common.Order"));
         topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.beans.factory.annotation.Autowired"));
+        topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Service"));
 
 
         StringBuilder sb = new StringBuilder();
@@ -65,8 +66,8 @@ public class BaseServiceGenerator extends AbstractJavaGenerator {
         addInsertSelectiveMethod(topLevelClass);
         addSelectByPrimaryKeyMethod(topLevelClass);
         addUpdateByPrimaryKeySelectiveMethod(topLevelClass);
-        addUpdateByPrimaryKeyWithBLOBsMethod(topLevelClass);
-        addUpdateByPrimaryKeyWithoutBLOBsMethod(topLevelClass);
+//        addUpdateByPrimaryKeyWithBLOBsMethod(topLevelClass);
+//        addUpdateByPrimaryKeyWithoutBLOBsMethod(topLevelClass);
         addSelectTotalMethod(topLevelClass);
         addSelectListMehthod(topLevelClass);
 

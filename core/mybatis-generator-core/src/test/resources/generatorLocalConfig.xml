@@ -3,7 +3,7 @@
         "src/main/resources/org/mybatis/generator/config/xml/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!-- 数据库驱动包位置 -->
-    <classPathEntry location="G:\project\mybatis-generator\mysql-connector-java-5.1.34_1.jar"/>
+    <classPathEntry location="/Users/lingz/Project/generator/core/mybatis-generator-core/lib/mysql-connector-java-5.1.34_1.jar"/>
 
     <context id="context1" defaultModelType="flat">
 
@@ -18,24 +18,24 @@
 
         <!-- 数据库链接URL、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.9.234:3306/ums_statistics"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/test"
                         userId="root"
-                        password="123456"/>
+                        password=""/>
 <!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://192.168.9.234:3306/marketing"
                         userId="root"
                         password="123456"/>-->
 
         <!-- 模型文件 -->
-        <javaModelGenerator targetPackage="com.qw.ums.console.modules.sdkreport.entity" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.dazi.spa.modules.product.model" targetProject="src/main/java"/>
         <!-- XML映射文件 -->
-        <sqlMapGenerator targetPackage="com.qw.ums.console.modules.sdkreport.mapper" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.dazi.spa.modules.product.mapper" targetProject="src/main/java"/>
         <!-- Mapper文件 -->
-        <javaClientGenerator targetPackage="com.qw.ums.console.modules.sdkreport.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.dazi.spa.modules.product.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
         <!--Service-->
-        <javaServiceGenerator targetPackage="com.qw.ums.console.modules.sdkreport.service" targetProject="src/main/java"  />
+        <javaServiceGenerator targetPackage="com.dazi.spa.modules.product.service" targetProject="src/main/java"  />
         <!--Controller-->
-        <javaControllerGenerator targetPackage="com.qw.ums.console.controller" targetProject="src/main/java"  />
+        <javaControllerGenerator targetPackage="com.dazi.spa.modules.product.controller" targetProject="src/main/java"  />
 
 
         <!-- 要生成哪些表(更改tableName和domainObjectName就可以) -->
@@ -48,7 +48,7 @@
                enableSelectByExample="false" selectByExampleQueryId="false"
         />
         -->
-        <table tableName="ads_callback_daily" domainObjectName="CallbackDaily"
+        <table tableName="spa_product" domainObjectName="Product"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"
