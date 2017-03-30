@@ -21,7 +21,7 @@ public class DeleteByPrimaryKeyMethodGenerator extends AbstractJavaServiceMethod
         method.addParameter(new Parameter(introspectedTable.getPrimaryKeyColumns().get(0).getFullyQualifiedJavaType(), introspectedTable.getPrimaryKeyColumns().get(0).getJavaProperty()));
         topLevelClass.addImportedType(introspectedTable.getPrimaryKeyColumns().get(0).getFullyQualifiedJavaType());
         StringBuilder sb = new StringBuilder();
-        sb.append("Assert.notNull(id, \"id不能为空\");");
+        sb.append("Assert.notNull(").append(introspectedTable.getPrimaryKeyColumns().get(0).getJavaProperty()).append(",\"id不能为空\")");
         method.addBodyLine(sb.toString());
         sb.setLength(0);
 

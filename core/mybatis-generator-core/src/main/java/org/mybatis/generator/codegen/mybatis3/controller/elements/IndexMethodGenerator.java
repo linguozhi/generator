@@ -25,7 +25,7 @@ public class IndexMethodGenerator extends AbstractJavaControllerMethodGenerator 
 
 
         StringBuilder sb = new StringBuilder();
-        sb.append("return \"index.html\"");
+        sb.append("return \"index.html\";");
         method.addBodyLine(sb.toString());
 
         topLevelClass.addMethod(method);

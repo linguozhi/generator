@@ -3,9 +3,7 @@ package org.mybatis.generator.codegen.mybatis3.controller;
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.codegen.AbstractJavaGenerator;
-import org.mybatis.generator.codegen.mybatis3.controller.elements.AbstractJavaControllerMethodGenerator;
-import org.mybatis.generator.codegen.mybatis3.controller.elements.GetListMethodGenerator;
-import org.mybatis.generator.codegen.mybatis3.controller.elements.IndexMethodGenerator;
+import org.mybatis.generator.codegen.mybatis3.controller.elements.*;
 import org.mybatis.generator.internal.util.JavaBeansUtil;
 
 import java.util.ArrayList;
@@ -56,11 +54,17 @@ public class BaseControllerGenerator extends AbstractJavaGenerator {
         addGetListMethod(topLevelClass);
         addUpdateMethod(topLevelClass);
         addSaveMethod(topLevelClass);
+        addDetailMethod(topLevelClass);
         addDeleteMethod(topLevelClass);
 
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
         answer.add(topLevelClass);
         return answer;
+    }
+
+    private void addDetailMethod(TopLevelClass topLevelClass) {
+        AbstractJavaControllerMethodGenerator methodGenerator = new DetailMethodGenerator();
+        initializeAndExecuteGenerator(methodGenerator, topLevelClass);
     }
 
     private void addGetListMethod(TopLevelClass topLevelClass) {
@@ -69,14 +73,18 @@ public class BaseControllerGenerator extends AbstractJavaGenerator {
     }
 
     private void addUpdateMethod(TopLevelClass topLevelClass) {
-
+        AbstractJavaControllerMethodGenerator methodGenerator = new UpdateMethodGenerator();
+        initializeAndExecuteGenerator(methodGenerator, topLevelClass);
     }
 
     private void addSaveMethod(TopLevelClass topLevelClass) {
+        AbstractJavaControllerMethodGenerator methodGenerator = new SaveMethodGenerator();
+        initializeAndExecuteGenerator(methodGenerator, topLevelClass);
     }
 
     private void addDeleteMethod(TopLevelClass topLevelClass) {
-
+        AbstractJavaControllerMethodGenerator methodGenerator = new DeleteMethodGenerator();
+        initializeAndExecuteGenerator(methodGenerator, topLevelClass);
     }
 
     private void addIndexMethod(TopLevelClass topLevelClass) {

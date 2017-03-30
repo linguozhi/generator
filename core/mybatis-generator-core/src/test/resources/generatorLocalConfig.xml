@@ -18,7 +18,11 @@
 
         <!-- 数据库链接URL、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+<<<<<<< HEAD
                         connectionURL="jdbc:mysql://127.0.0.1:3306/test"
+=======
+                        connectionURL="jdbc:mysql://192.168.9.232:3306/marketing"
+>>>>>>> 10534a8ebf2b3e79edc143c43413c67e9f16e699
                         userId="root"
                         password=""/>
 <!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -27,6 +31,7 @@
                         password="123456"/>-->
 
         <!-- 模型文件 -->
+<<<<<<< HEAD
         <javaModelGenerator targetPackage="com.dazi.spa.modules.product.model" targetProject="src/main/java"/>
         <!-- XML映射文件 -->
         <sqlMapGenerator targetPackage="com.dazi.spa.modules.product.mapper" targetProject="src/main/java"/>
@@ -36,6 +41,17 @@
         <javaServiceGenerator targetPackage="com.dazi.spa.modules.product.service" targetProject="src/main/java"  />
         <!--Controller-->
         <javaControllerGenerator targetPackage="com.dazi.spa.modules.product.controller" targetProject="src/main/java"  />
+=======
+        <javaModelGenerator targetPackage="com.yiyou.marketing.model" targetProject="src/main/java"/>
+        <!-- XML映射文件 -->
+        <sqlMapGenerator targetPackage="com.yiyou.marketing.persistence" targetProject="src/main/java"/>
+        <!-- Mapper文件 -->
+        <javaClientGenerator targetPackage="com.yiyou.marketing.persistence" targetProject="src/main/java" type="XMLMAPPER"/>
+        <!--Service-->
+        <javaServiceGenerator targetPackage="com.yiyou.marketing.service" targetProject="src/main/java"  />
+        <!--Controller-->
+        <javaControllerGenerator targetPackage="com.qw.gs.console.modules.statis.controller" targetProject="src/main/java"  />
+>>>>>>> 10534a8ebf2b3e79edc143c43413c67e9f16e699
 
 
         <!-- 要生成哪些表(更改tableName和domainObjectName就可以) -->
@@ -48,13 +64,17 @@
                enableSelectByExample="false" selectByExampleQueryId="false"
         />
         -->
+<<<<<<< HEAD
         <table tableName="spa_product" domainObjectName="Product"
+=======
+        <table tableName="mt_user_limit_rule" domainObjectName="UserLimitRule"
+>>>>>>> 10534a8ebf2b3e79edc143c43413c67e9f16e699
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"
         />
 
-<!--        <table tableName="mt_bulletin_audit" domainObjectName="BulletinAudit"
+<!--        <table tableName="mt_statis_audit" domainObjectName="statisAudit"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"

@@ -46,6 +46,7 @@
                             password="123456"/>-->
 
     <!-- 模型文件 -->
+<<<<<<< HEAD
     <javaModelGenerator targetPackage="com.qw.ums.console.modules.sdkreport.entity" targetProject="src/main/java"/>
     <!-- XML映射文件 -->
     <sqlMapGenerator targetPackage="com.qw.ums.console.modules.sdkreport.mapper" targetProject="src/main/java"/>
@@ -53,6 +54,15 @@
     <javaClientGenerator targetPackage="com.qw.ums.console.modules.sdkreport.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
     <!--Service-->
     <javaServiceGenerator targetPackage="com.qw.ums.console.modules.sdkreport.service" targetProject="src/main/java"  />
+=======
+    <javaModelGenerator targetPackage="com.qw.ums.console.modules.checkItem.entity" targetProject="src/main/java"/>
+    <!-- XML映射文件 -->
+    <sqlMapGenerator targetPackage="com.qw.ums.console.modules.checkItem.mapper" targetProject="src/main/java"/>
+    <!-- Mapper文件 -->
+    <javaClientGenerator targetPackage="com.qw.ums.console.modules.checkItem.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+    <!--Service-->
+    <javaServiceGenerator targetPackage="com.qw.ums.console.modules.checkItem.service" targetProject="src/main/java"  />
+>>>>>>> 10534a8ebf2b3e79edc143c43413c67e9f16e699
     <!--Controller-->
     <javaControllerGenerator targetPackage="com.qw.ums.console.controller" targetProject="src/main/java"  />
 
@@ -67,7 +77,11 @@
            enableSelectByExample="false" selectByExampleQueryId="false"
     />
     -->
+<<<<<<< HEAD
     <table tableName="ads_callback_daily" domainObjectName="CallbackDaily"
+=======
+    <table tableName="spa_item_level" domainObjectName="ItemLevel"
+>>>>>>> 10534a8ebf2b3e79edc143c43413c67e9f16e699
            enableCountByExample="false"
            enableUpdateByExample="false" enableDeleteByExample="false"
            enableSelectByExample="false" selectByExampleQueryId="false"

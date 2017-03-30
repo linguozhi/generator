@@ -31,7 +31,6 @@ public class SelectTotalMethodGenerator extends AbstractJavaMapperMethodGenerato
         importedTypes.add(new FullyQualifiedJavaType(
                 "com.qw.ums.console.common.Order"));
 
-
         context.getCommentGenerator().addGeneralMethodComment(method,
                 introspectedTable);
 

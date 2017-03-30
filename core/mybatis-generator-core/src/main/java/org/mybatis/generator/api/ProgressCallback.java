@@ -41,7 +41,7 @@ package org.mybatis.generator.api;
  * 
  * @author Jeff Butler
  */
-public interface ProgressCallback {
+public interface    ProgressCallback {
     /**
      * Called to note the start of the introspection phase, and to note the
      * maximum number of startTask messages that will be sent for the
